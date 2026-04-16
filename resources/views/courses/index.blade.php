@@ -64,7 +64,7 @@
                         @endif
                     </td>
                     <td>
-                        <div class="fw-bold fs-5" style="color: var(--gold-soft);">{{ $course->name }}</div>
+                        <div class="fw-bold fs-5" style="color: #FFFFFF;">{{ $course->name }}</div>
                         <div class="small text-muted">{{ Str::limit($course->description, 50) }}</div>
                     </td>
                     <td><span class="fs-6 fw-semibold">{{ number_format($course->price) }} VNĐ</span></td>

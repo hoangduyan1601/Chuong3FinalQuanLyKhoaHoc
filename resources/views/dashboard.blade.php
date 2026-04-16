@@ -9,7 +9,7 @@
     <div class="col-md-4">
         <div class="card-luxury p-4 text-center">
             <div class="mb-3">
-                <i class="bi bi-book-half fs-1" style="color: var(--gold-soft);"></i>
+                <i class="bi bi-book-half fs-1" style="color: #FFFFFF;"></i>
             </div>
             <h6 class="text-uppercase small mb-2" style="letter-spacing: 2px;">Tổng khóa học</h6>
             <h2 class="display-5 fw-bold luxury-font mb-0">{{ $totalCourses }}</h2>
@@ -18,7 +18,7 @@
     <div class="col-md-4">
         <div class="card-luxury p-4 text-center">
             <div class="mb-3">
-                <i class="bi bi-people-fill fs-1" style="color: var(--gold-soft);"></i>
+                <i class="bi bi-people-fill fs-1" style="color: #FFFFFF;"></i>
             </div>
             <h6 class="text-uppercase small mb-2" style="letter-spacing: 2px;">Tổng học viên</h6>
             <h2 class="display-5 fw-bold luxury-font mb-0">{{ $totalStudents }}</h2>
@@ -27,7 +27,7 @@
     <div class="col-md-4">
         <div class="card-luxury p-4 text-center">
             <div class="mb-3">
-                <i class="bi bi-bank fs-1" style="color: var(--gold-soft);"></i>
+                <i class="bi bi-bank fs-1" style="color: #FFFFFF;"></i>
             </div>
             <h6 class="text-uppercase small mb-2" style="letter-spacing: 2px;">Tổng doanh thu</h6>
             <h2 class="display-5 fw-bold luxury-font mb-0">{{ number_format($totalRevenue) }}đ</h2>
@@ -68,7 +68,7 @@
     </div>
     <div class="col-md-5">
         <div class="card-luxury h-100 p-4 d-flex flex-column justify-content-center text-center">
-            <h5 class="text-uppercase mb-4" style="letter-spacing: 3px; color: var(--gold-soft);">Khóa học nổi bật</h5>
+            <h5 class="text-uppercase mb-4" style="letter-spacing: 3px; color: #FFFFFF;">Khóa học nổi bật</h5>
             @if($mostPopularCourse)
                 <h2 class="luxury-font mb-3">{{ $mostPopularCourse->name }}</h2>
                 <div class="fs-4 mb-4">

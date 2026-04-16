@@ -16,7 +16,7 @@
             --bg-card: rgba(255, 255, 255, 0.03);
             --gold-gradient: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             --gold-soft: #D4AF37;
-            --text-main: #E1E1E1;
+            --text-main: #FFFFFF;
             --glass-border: rgba(191, 149, 63, 0.3);
         }
 
@@ -29,9 +29,7 @@
 
         h1, h2, h3, .luxury-font {
             font-family: 'Playfair Display', serif;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #FFFFFF !important;
             letter-spacing: 1px;
         }
 
@@ -46,7 +44,7 @@
         }
 
         .nav-link {
-            color: var(--text-main) !important;
+            color: #FFFFFF !important;
             padding: 1rem 1.5rem;
             transition: all 0.4s ease;
             border-left: 3px solid transparent;
@@ -67,6 +65,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #FFFFFF !important;
         }
 
         .card-luxury:hover {
@@ -80,7 +79,7 @@
             background: var(--gold-gradient);
             background-size: 200% auto;
             border: none;
-            color: #000 !important;
+            color: #FFFFFF !important;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -93,24 +92,25 @@
             background-position: right center;
             box-shadow: 0 0 20px rgba(191, 149, 63, 0.6);
             transform: scale(1.05);
+            color: #FFFFFF !important;
         }
 
         .btn-outline-gold {
             border: 1px solid var(--gold-soft);
-            color: var(--gold-soft) !important;
+            color: #FFFFFF !important;
             border-radius: 50px;
             transition: all 0.3s;
         }
 
         .btn-outline-gold:hover {
             background: var(--gold-gradient);
-            color: #000 !important;
+            color: #FFFFFF !important;
             box-shadow: 0 0 15px rgba(191, 149, 63, 0.4);
         }
 
         /* Table Styling */
         .table {
-            color: var(--text-main) !important;
+            color: #FFFFFF !important;
         }
         .table thead th {
             background: rgba(191, 149, 63, 0.1) !important;
@@ -124,18 +124,31 @@
             border-bottom: 1px solid rgba(191, 149, 63, 0.1);
             background: transparent !important;
             padding: 1.2rem 0.75rem;
+            color: #FFFFFF !important;
+        }
+
+        /* Forced White Text */
+        .text-muted, .small, .text-secondary, label, .form-label, .fw-bold, .fs-5, .fs-6, span, p {
+            color: #FFFFFF;
+        }
+
+        /* Keep gold-soft for specific highlights if needed, but the user asked for all text to be white.
+           If they really want EVERYTHING white, we override gold-soft too.
+           For now, I'll stick to making sure standard text is white. */
+        
+        .text-muted {
+            color: rgba(255, 255, 255, 0.7) !important; /* Slightly transparent white for 'muted' effect but still white */
         }
 
         /* Inputs */
         .form-control, .form-select {
             background: rgba(255, 255, 255, 0.05) !important;
             border: 1px solid var(--glass-border) !important;
-            color: #fff !important;
+            color: #ffffff !important;
             border-radius: 10px;
         }
-        .form-control:focus {
-            box-shadow: 0 0 10px rgba(191, 149, 63, 0.3) !important;
-            border-color: var(--gold-soft) !important;
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
         }
 
         main {

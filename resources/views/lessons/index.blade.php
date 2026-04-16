@@ -14,7 +14,7 @@
 <div class="card-luxury p-4 mb-5">
     <form action="{{ route('lessons.index') }}" method="GET" class="row g-3">
         <div class="col-md-6">
-            <label for="course_id" class="form-label text-uppercase small fw-bold" style="color: var(--gold-soft); letter-spacing: 1px;">Chọn khóa học để hiển thị lộ trình</label>
+            <label for="course_id" class="form-label text-uppercase small fw-bold" style="color: #FFFFFF; letter-spacing: 1px;">Chọn khóa học để hiển thị lộ trình</label>
             <select name="course_id" id="course_id" class="form-select" onchange="this.form.submit()">
                 <option value="">-- Chọn khóa học tinh hoa --</option>
                 @foreach($allCourses as $c)
@@ -48,7 +48,7 @@
                     @forelse($lessons as $lesson)
                     <tr>
                         <td class="ps-4">
-                            <span class="badge bg-dark border border-warning text-warning px-3 py-2" style="font-size: 1rem;">
+                            <span class="badge bg-dark border border-warning text-white px-3 py-2" style="font-size: 1rem;">
                                 #{{ $lesson->order }}
                             </span>
                         </td>

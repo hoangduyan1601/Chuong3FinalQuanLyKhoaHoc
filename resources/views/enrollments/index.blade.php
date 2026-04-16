@@ -23,8 +23,8 @@
                         <a href="{{ route('enrollments.index', ['course_id' => $course->id]) }}" 
                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 bg-transparent border-bottom border-secondary {{ request('course_id') == $course->id ? 'active' : '' }}"
                            style="color: var(--text-main);">
-                            <span class="{{ request('course_id') == $course->id ? 'text-gold fw-bold' : '' }}">{{ $course->name }}</span>
-                            <span class="badge bg-dark border border-warning text-warning rounded-pill">{{ $course->enrollments_count }}</span>
+                            <span class="{{ request('course_id') == $course->id ? 'text-white fw-bold' : '' }}">{{ $course->name }}</span>
+                            <span class="badge bg-dark border border-warning text-white rounded-pill">{{ $course->enrollments_count }}</span>
                         </a>
                     @endforeach
                 </div>
@@ -57,7 +57,7 @@
                                                 {{ substr($student->name, 0, 1) }}
                                             </div>
                                         </td>
-                                        <td class="fw-bold" style="color: var(--gold-soft);">{{ $student->name }}</td>
+                                        <td class="fw-bold" style="color: #FFFFFF;">{{ $student->name }}</td>
                                         <td style="color: #fff;">{{ $student->email }}</td>
                                         <td class="text-end pe-4 text-muted small">
                                             {{ $student->pivot->created_at->format('H:i - d/m/Y') }}

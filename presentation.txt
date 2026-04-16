@@ -1,0 +1,98 @@
+================================================================================
+                    BÁO CÁO TỔNG QUAN HỆ THỐNG QUẢN LÝ KHÓA HỌC
+                         (ELITE COURSE MANAGEMENT SYSTEM)
+================================================================================
+
+1. TÊN ĐỀ TÀI:
+   Hệ thống Quản lý Khóa học Trực tuyến - Elite CMS.
+
+2. MỤC TIÊU ĐỀ TÀI:
+   Xây dựng một nền tảng quản trị nội dung giáo dục (LMS/CMS) chuyên nghiệp, 
+   hỗ trợ việc lưu trữ kiến thức, quản lý bài giảng và theo dõi danh sách 
+   đăng ký của học viên một cách khoa học và tối ưu.
+
+3. CÁC CHỨC NĂNG CHÍNH:
+   - Quản lý Khóa học (Courses): Khởi tạo, chỉnh sửa thông tin, giá cả và 
+     hình ảnh đại diện cho các khóa học tinh hoa.
+   - Quản lý Bài giảng (Lessons): Thiết lập lộ trình bài học theo thứ tự, 
+     tích hợp link video bài giảng trực tuyến.
+   - Quản lý Học viên (Students): Lưu trữ thông tin cá nhân và định danh 
+     học viên trong hệ thống.
+   - Hệ thống Đăng ký (Enrollments): Ghi nhận học viên tham gia khóa học, 
+     thống kê số lượng học viên và doanh thu theo thời gian thực.
+   - Dashboard (Bảng điều khiển): Cung cấp cái nhìn tổng quát về quy mô 
+     hệ thống qua các con số thống kê trực quan.
+
+4. CÔNG NGHỆ SỬ DỤNG:
+   - Backend: Laravel Framework (PHP) - Tận dụng mô hình MVC mạnh mẽ.
+   - Database: MySQL - Quản lý dữ liệu quan hệ (Học viên - Khóa học - Bài học).
+   - Frontend: 
+     + Blade Template Engine.
+     + Bootstrap 5 & Bootstrap Icons.
+     + Google Fonts (Playfair Display & Inter).
+   - Kiến trúc: Eloquent ORM, Migrations, Seeders, Blade Components.
+
+5. ĐIỂM NỔI BẬT (UI/UX):
+   - Giao diện Luxury Dark Theme: Sử dụng tông màu chủ đạo là Deep Black (#0B0C10) 
+     kết hợp với sắc Vàng Gold (#D4AF37) và Trắng (#FFFFFF) tạo cảm giác 
+     sang trọng, đẳng cấp.
+   - Phong cách Glassmorphism: Áp dụng hiệu ứng kính mờ và viền ánh kim 
+     cho các Card và Sidebar, mang lại trải nghiệm hiện đại.
+   - Responsive Design: Giao diện hiển thị tốt trên cả máy tính và thiết bị di động.
+
+================================================================================
+6. GIẢI THÍCH CHI TIẾT CẤU TRÚC MÃ NGUỒN (SOURCE CODE DEEP DIVE)
+================================================================================
+
+A. LUỒNG XỬ LÝ YÊU CẦU (REQUEST LIFECYCLE):
+   Khi người dùng tương tác, yêu cầu sẽ đi qua luồng:
+   Browser -> Routes (web.php) -> Controller -> Model (Database) -> View (Blade)
+   -> Browser (Kết quả hiển thị).
+
+B. CHI TIẾT TẦNG CƠ SỞ DỮ LIỆU (DATABASE LAYER):
+   - Migrations: Được sử dụng như một hệ thống quản lý phiên bản cho DB. Mỗi bảng 
+     (courses, lessons, students, enrollments) được định nghĩa kiểu dữ liệu 
+     và ràng buộc (foreign key) rõ ràng.
+   - Eloquent Relationships (Mối quan hệ):
+     + Course -> hasMany(Lesson): Một khóa học sở hữu một danh sách bài giảng.
+     + Course -> belongsToMany(Student): Quan hệ N-N. Laravel xử lý thông qua 
+       bảng trung gian 'enrollments', cho phép một học viên học nhiều khóa và 
+       một khóa có nhiều học viên.
+     + Lesson -> belongsTo(Course): Mỗi bài giảng bắt buộc phải thuộc về một 
+       khóa học cụ thể.
+
+C. CHI TIẾT TẦNG LOGIC (CONTROLLER LAYER):
+   - CourseController: Sử dụng Dependency Injection để nhận dữ liệu từ Request. 
+     Trong phương thức store/update, hệ thống áp dụng logic xử lý File: 
+     sử dụng `$request->file('image')->store()` để lưu ảnh vào Disk Public, 
+     đảm bảo tính bảo mật và hiệu suất.
+   - DashboardController: Sử dụng các phương thức thống kê của Eloquent như 
+     `sum('price')`, `count()`, `withCount()` để tính toán dữ liệu tổng quát 
+     mà không cần viết câu lệnh SQL phức tạp.
+   - Validation: Áp dụng các quy tắc như 'required', 'numeric', 'image', 'mimes' 
+     để lọc dữ liệu rác, ngăn chặn lỗi hệ thống từ phía người dùng.
+
+D. CHI TIẾT TẦNG GIAO DIỆN (VIEW LAYER):
+   - Layout Inheritance (@extends, @section): Tệp master.blade.php đóng vai trò 
+     khung xương. Các trang con chỉ cần định nghĩa phần nội dung riêng biệt, 
+     giúp mã nguồn dễ bảo trì và tránh lặp lại (DRY - Don't Repeat Yourself).
+   - Custom Luxury CSS System:
+     + :root Variables: Định nghĩa hệ thống biến màu sắc (gold-soft, bg-deep).
+     + Card-luxury Class: Kết hợp `backdrop-filter: blur(15px)` và 
+       `border: 1px solid rgba(191,149,63,0.3)` để tạo hiệu ứng kính mờ ánh kim.
+     + Global Overrides: Ghi đè triệt để các lớp CSS của Bootstrap để ép 
+       mọi văn bản về màu trắng, tạo sự đồng nhất cho phong cách Dark Mode.
+
+E. CÁC CƠ CHẾ TỐI ƯU HÓA & BẢO MẬT:
+   - CSRF Protection: Tự động đính kèm Token bảo mật trong mọi Form.
+   - Mass Assignment Protection: Sử dụng thuộc tính `$fillable` trong Models 
+     để chỉ cho phép các cột dữ liệu an toàn được phép lưu trữ.
+   - Eager Loading: Sử dụng phương thức `with()` khi truy vấn để giảm số lượng 
+     câu lệnh SQL (giải quyết vấn đề N+1 Query), giúp hệ thống chạy nhanh hơn.
+
+================================================================================
+8. TỔNG KẾT KỸ THUẬT:
+   Mã nguồn được viết theo chuẩn PSR (PHP Standard Recommendation), tách biệt 
+   rõ ràng giữa giao diện, logic và dữ liệu, đảm bảo tính dễ đọc, dễ mở rộng 
+   và đạt hiệu thẩm mỹ cao nhất trong phân khúc các ứng dụng quản lý.
+================================================================================
