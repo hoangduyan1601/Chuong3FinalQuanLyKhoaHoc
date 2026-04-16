@@ -82,4 +82,4 @@ Hệ thống đã được thiết kế tối ưu cho việc chụp ảnh minh h
 ---
 
 ## 🛡️ Tác giả
-Dự án được thực hiện bởi **Senior Laravel Developer**. Mọi thắc mắc vui lòng liên hệ đội ngũ kỹ thuật.
+Dự án được thực hiện bởi Hoàng Duy An. Mọi thắc mắc vui lòng liên hệ đội ngũ kỹ thuật.
